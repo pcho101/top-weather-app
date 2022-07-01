@@ -1,0 +1,24 @@
+{
+  "name": "top-weather-app",
+  "version": "1.0.0",
+  "description": "### [The Odin Project](https://www.theodinproject.com/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pcho101/top-weather-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pcho101/top-weather-app/issues"
+  },
+  "homepage": "https://github.com/pcho101/top-weather-app#readme",
+  "devDependencies": {
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
