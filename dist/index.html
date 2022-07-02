@@ -7,10 +7,32 @@
     <title>Weather App</title>
 </head>
 <body>
-    <form action="#">
-        <button>S</button>
-        <input type="search" name="search" id="search" autocomplete="off" placeholder="Enter a city...">
-    </form>
+    <header>
+        <form action="#">
+            <button>S</button>
+            <input type="search" name="search" id="search" autocomplete="off" placeholder="Enter a city...">
+        </form>
+        <label class="switch">
+            <input type="checkbox" name="toggle-temp" id="toggle-temp">
+            <span class="slider round"></span>
+        </label>
+    </header>
+    <main>
+        <div class="date"></div>
+        <div class="location"></div>
+        <div class="type"></div>
+        <div class="desc"></div>
+        <div class="temp"></div>
+        <div class="temp-max"></div>
+        <div class="temp-min"></div>
+        <div class="feels-like"></div>
+        <div class="sunrise"></div>
+        <div class="sunset"></div>
+        <div class="humidity"></div>
+        <div class="wind"></div>
+        <div class="cloudiness"></div>
+    </main>
+    <footer></footer>
     <script src="main.js"></script>
 </body>
 </html>
