@@ -44,8 +44,33 @@ const api = (() => {
 })();
 
 
-async function displayData() {
-    const weatherData = await api.getData('london');
-    console.log(weatherData);
-}
-displayData();
+const dom = (() => {
+    let weatherData;
+
+    const form = document.querySelector('form');
+    const search = document.getElementById('search');
+
+    async function displayData(query) {
+        weatherData = await api.getData(query);
+        console.log('Weather Data: ', weatherData);
+        if(weatherData.cod) {
+            console.log(weatherData.message);
+        }
+        else {
+            console.log('displaying on page');
+        }
+    };
+
+    function submitToAPI(e) {
+        console.log('form submitted');
+        displayData(search.value);
+
+        search.value = '';
+        e.preventDefault();
+    };
+    
+    form.addEventListener('submit', submitToAPI);
+    return {
+
+    }
+})();
