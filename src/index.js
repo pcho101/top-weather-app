@@ -1,3 +1,4 @@
+import './style.css';
 import { fromUnixTime, format } from 'date-fns'
 
 const api = (() => {

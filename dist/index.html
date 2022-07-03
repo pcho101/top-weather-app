@@ -5,34 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <header>
         <form action="#">
-            <button>S</button>
+            <button>
+                <span class="material-icons">search</span>
+            </button>
             <input type="search" name="search" id="search" autocomplete="off" placeholder="Enter a city...">
         </form>
-        <label class="switch">
-            <input type="checkbox" name="toggle-temp" id="toggle-temp">
-            <span class="slider round"></span>
-        </label>
+        <input type="checkbox" name="toggle-temp" id="toggle-temp">
     </header>
     <main>
         <div class="date"></div>
-        <div class="location"></div>
-        <div class="type"></div>
-        <div class="desc"></div>
-        <div class="temp"></div>
-        <div class="temp-max"></div>
-        <div class="temp-min"></div>
-        <div class="feels-like"></div>
-        <div class="sunrise"></div>
-        <div class="sunset"></div>
-        <div class="humidity"></div>
-        <div class="wind"></div>
-        <div class="cloudiness"></div>
+        <div class="section">
+            <span class="material-icons">place</span>
+            <div class="location"></div>
+        </div>
+        <div class="section current-temp">
+            <span class="material-icons">sunny</span>
+            <div class="section-desc">
+                <div class="type"></div>
+                <div class="desc"></div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="temp"></div>
+            <div class="section-temp">
+                <div class="temp-max"></div>
+                <div class="temp-min"></div>
+            </div>
+        </div>
+        <div class="section">
+            <span class="material-icons">thermostat</span>
+            <div class="section-label">Feels Like</div>
+            <div class="feels-like"></div>
+        </div>
+        <div class="section">
+            <span class="material-icons">wb_twilight</span>
+            <div class="section-label">Sunrise</div>
+            <div class="sunrise"></div>
+        </div>
+        <div class="section">
+            <span class="material-icons">wb_twilight</span>
+            <div class="section-label">Sunset</div>
+            <div class="sunset"></div>
+        </div>
+        <div class="section">
+            <span class="material-icons">water_drop</span>
+            <div class="section-label">Humidity</div>
+            <div class="humidity"></div>
+        </div>
+        <div class="section">
+            <span class="material-icons">air</span>
+            <div class="section-label">Wind</div>
+            <div class="wind"></div>
+        </div>
+        <div class="section">
+            <span class="material-icons">cloud</span>
+            <div class="section-label">Cloudiness</div>
+            <div class="cloudiness"></div>
+        </div>
     </main>
-    <footer></footer>
+    <footer>
+        <p>Copyright © 2022 | 
+            <a href="https://github.com/pcho101/top-weather-app">pcho101</a>
+        </p>
+    </footer>
     <script src="main.js"></script>
 </body>
 </html>
