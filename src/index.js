@@ -1,5 +1,5 @@
 import './style.css';
-import { fromUnixTime, format } from 'date-fns'
+import { fromUnixTime } from 'date-fns'
 
 const api = (() => {
     const endPoint = 'https://api.openweathermap.org/data/2.5/weather?q=';
@@ -7,8 +7,10 @@ const api = (() => {
 
     function processData(response) {
         const weatherData = {
+            time: response.dt,
             type: response.weather[0].main,
             description: response.weather[0].description,
+            icon: response.weather[0].icon,
             city: response.name,
             country: response.sys.country,
             temp: response.main.temp,
@@ -52,10 +54,12 @@ const dom = (() => {
     let weatherData;
     let units = 'metric';
 
+    const body = document.querySelector('body');
     const form = document.querySelector('form');
     const search = document.getElementById('search');
     const check = document.getElementById('toggle-temp');
 
+    const tempIcon = document.querySelector('.temp-icon');
     const date = document.querySelector('.date');
     const weatherType = document.querySelector('.type');
     const description = document.querySelector('.desc');
@@ -66,7 +70,6 @@ const dom = (() => {
     const feelsLike = document.querySelector('.feels-like');
     const sunrise = document.querySelector('.sunrise');
     const sunset = document.querySelector('.sunset');
-    const timezone = document.querySelector('.timezone');
     const humidity = document.querySelector('.humidity');
     const wind = document.querySelector('.wind');
     const cloudiness = document.querySelector('.cloudiness');
@@ -92,8 +95,59 @@ const dom = (() => {
         return units === 'metric' ? 'm/s' : 'mph';
     }
 
+    function setTempIcon() {
+        let result;
+        switch(weatherData.icon) {
+            case '01d':
+                result = 'sunny';
+                body.style.backgroundImage = 'var(--sunny)';
+                break;
+            case '01n':
+                result = 'clear_night';
+                body.style.backgroundImage = 'var(--night)';
+                break;
+            case '02d':
+                result = 'partly_cloudy_day';
+                body.style.backgroundImage = 'var(--cloud)';
+                break;
+            case '02n':
+                result = 'partly_cloudy_night';
+                body.style.backgroundImage = 'var(--night)';
+                break;
+            case '03d':
+            case '04d':
+            case '03n':
+            case '04n':
+                result = 'cloud';
+                body.style.backgroundImage = 'var(--cloud)';
+                break;
+            case '09d':
+            case '10d':
+            case '09n':
+            case '10n':
+                result = 'rainy';
+                body.style.backgroundImage = 'var(--rainy)';
+                break;
+            case '11d':
+            case '11n':
+                result = 'thunderstorm';
+                body.style.backgroundImage = 'var(--storm)';
+                break;
+            case '13d':
+            case '13n':
+                result = 'cloudy_snowing';
+                body.style.backgroundImage = 'var(--snow)';
+                break;
+            default:
+                result = 'waves';
+                body.style.backgroundImage = 'var(--cloud)';
+        }
+        tempIcon.textContent = result;
+    }
+
     function render() {
-        date.textContent = format(new Date(), 'ccc, LLL d, yyyy');
+        setTempIcon();
+        date.textContent = fromUnixTime(weatherData.time + weatherData.timezone).toUTCString().slice(0, -7);
         weatherType.textContent = weatherData.type;
         description.textContent = weatherData.description;
         location.textContent = weatherData.city + ', ' + weatherData.country;

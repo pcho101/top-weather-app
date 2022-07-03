@@ -1,9 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus&display=swap');
 
+:root {
+	--sunny: linear-gradient(to bottom right, #2877ba, #3ea7e0, #a9e0f5, #74bde2);
+	--night: linear-gradient(to bottom right, #090830, #35378e, #1a1f4d, #090830);
+	--cloud: linear-gradient(to bottom right, #9caeb9, #bac3c9, #90abbf, #61a6cd);
+	--rainy: linear-gradient(to bottom right, #2b3c46, #4a5a67, #5a6b78, #21323c);
+	--snow: linear-gradient(to bottom right, #8397a8, #e7eef4, #94aec3, #f1f4f6);
+	--storm: linear-gradient(to bottom right, #1e222f, #6c7693, #1d212a, #17191c);
+}
+
 * {
 	font-family: 'Gentium Book Plus', serif;
+	text-shadow: 1px 1px 2px black;
 	text-align: center;
 	margin: auto;
+	color: white;
 }
 
 header {
@@ -31,7 +42,7 @@ button {
 	border: none;
 }
 
-.material-icons {
+.material-symbols-outlined {
 	font-size: 20px;
 }
 
@@ -116,7 +127,7 @@ input:checked + .slider:before {
 	content: attr(data-off);
 	position: absolute;
 	right: 5px;
-	color: black;
+	color: white;
 	opacity: 1;
 	transition: all 0.4;
 }
@@ -143,7 +154,7 @@ footer {
     display: flex;
     justify-content: center;
     align-content: center;
-    background-color: #eeeeee;
+    background-color: transparent;
     height: min-content;
 }
 
@@ -153,7 +164,7 @@ a:link {
 
 a:visited {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 a:hover {
@@ -173,10 +184,10 @@ a:hover {
 	font-size: 3rem;
 }
 
-main .material-icons {
+main .material-symbols-outlined {
 	font-size: 36px;
 }
 
-.current-temp .material-icons {
+.current-temp .material-symbols-outlined {
 	font-size: 64px;
 }
