@@ -58,6 +58,8 @@ const dom = (() => {
     const form = document.querySelector('form');
     const search = document.getElementById('search');
     const check = document.getElementById('toggle-temp');
+    const main = document.querySelector('main');
+    const errorMsg = document.querySelector('.error-message');
 
     const tempIcon = document.querySelector('.temp-icon');
     const date = document.querySelector('.date');
@@ -145,7 +147,23 @@ const dom = (() => {
         tempIcon.textContent = result;
     }
 
+    function capitalizeMessage(message) {
+        const firstLetter = message.charAt(0).toUpperCase();
+        return firstLetter + message.slice(1);
+    }
+
+    function renderError(data) {
+        errorMsg.textContent = capitalizeMessage(data.message);
+        main.style.display = 'none';
+    }
+
+    function renderLoading() {
+        errorMsg.textContent = 'Loading...';
+    }
+
     function render() {
+        errorMsg.textContent = '';
+        main.style.display = 'grid';
         setTempIcon();
         date.textContent = fromUnixTime(weatherData.time + weatherData.timezone).toUTCString().slice(0, -7);
         weatherType.textContent = weatherData.type;
@@ -163,13 +181,16 @@ const dom = (() => {
     };
 
     async function displayData(query) {
-        weatherData = await api.getData(query);
+        renderLoading();
+        const data = await api.getData(query);
         console.log('Weather Data: ', weatherData);
-        if(weatherData.cod) {
-            console.log(weatherData.message);
+        if(data.cod) {
+            console.log(data.message);
+            renderError(data);
         }
         else {
             console.log('displaying on page');
+            weatherData = data;
             render();
         }
     };
